@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const server = express();
 const localProxy = fs.readFileSync('./config/localProxy.dat', 'utf8').trim(); // Menggunakan trim untuk menghilangkan spasi atau baris baru yang tidak diinginkan
-const port = fs.readFileSync('./config/port.dat', 'utf8').trim(); // Menggunakan trim untuk menghilangkan spasi atau baris baru yang tidak diinginkan
+const port = process.env.PORT || fs.readFileSync('./config/port.dat', 'utf8').trim(); // Menggunakan trim untuk menghilangkan spasi atau baris baru yang tidak diinginkan
 
 // Fungsi untuk memeriksa ketersediaan server tujuan
 function checkServerAvailability() {
